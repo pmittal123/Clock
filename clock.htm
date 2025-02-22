@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clock</title>
+    <link rel="stylesheet" href="clock.css">
+</head>
+<body>
+    <p class="p">click centre </p>
+    <div class="con">
+        <div class="body">
+            <div class="frame-side"></div>
+            <div class="centre"><button id="but">1</button></div>
+            <p class="hidden-text" id="hid-tex">
+            <span class="hidden-text-gradient">
+                <br><br>PROJECT DETAILS <br><br>
+                This project is a CSS and JavaScript-powered analog clock<br>
+                designed with a structured layout, featuring a circular frame, tick marks, and animated clock hands that rotate dynamically to represent the current time.<br>
+                The design is heavily CSS-driven, with properties like <code>clip-path</code> used to create the pointed clock hands and <code>transform-origin</code> ensuring accurate rotation from the center.<br><br>
+            
+                Key Features:<br><br>
+            
+                - Clock Structure:<br>
+                The <code>.con</code> container holds the entire clock, centering it using <code>transform: translate(-50%, -50%)</code>.<br>
+                The <code>.body</code> serves as the clock face, enclosed within <code>.frame-side</code> to create the outer rim.<br><br>
+            
+                - Clock Hands:<br>
+                The hour (<code>.hh</code>), minute (<code>.mh</code>), and second (<code>.sh</code>) hands are designed using <code>clip-path</code> polygons to create a pointed effect.<br>
+                They are positioned using <code>transform: translate(-50%, 0%)</code> so they rotate from their top point.<br><br>
+            
+                - Time Markers:<br>
+                The <code>.time-con</code> div contains tick marks (<code>.time</code>), which are positioned using <code>transform: rotate(calc(30deg * var(--i)))</code><br>
+                to distribute them evenly around the clock face.<br><br>
+            
+                - Animations:<br>
+                Keyframes (<code>@keyframes rotate-hour</code>, <code>rotate-minute</code>, <code>rotate-second</code>)<br>
+                ensure smooth rotation, updating the hands in real-time.<br><br>
+            
+                Interactive Feature:<br><br>
+            
+                The center button inside <code>.centre</code> allows interaction.<br>
+                When clicked, it can display project details, explaining how the clock was made.<br>
+                This part is still under development, but it will be a key interactive element.
+            
+            </span>
+            </p>
+            
+            <div class="time-con">
+                <div style="--i:0" class="time t0"></div>
+                <div style="--i:1" class="time t1"></div>
+                <div style="--i:2" class="time t2"></div>
+                <div style="--i:3" class="time t3"></div>
+                <div style="--i:4" class="time t4"></div>
+                <div style="--i:5" class="time t5"></div>
+                <div style="--i:6" class="time t6"></div>
+                <div style="--i:7" class="time t7"></div>
+                <div style="--i:8" class="time t8"></div>
+                <div style="--i:9" class="time t9"></div>
+                <div style="--i:10" class="time t10"></div>
+                <div style="--i:11" class="time t11"></div>
+            </div>
+            <div class="hand">
+                <div class="hh"></div>
+                <div class="mh"></div>
+                <div class="sh"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="sc.js"></script>
+</body>
+</html> 

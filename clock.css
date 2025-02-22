@@ -1,0 +1,260 @@
+:root{
+    --bg:rgb(141, 163, 160);
+    --fcol:#9b5d11;
+    --cbg:#ffffff;
+    --line:black;
+    --hh:black;
+    --mh:black;
+    --sh:black;
+    --bcol:transparent;
+    --scol:#4444;
+    --inscol:#9f9f9f;
+    --newcol:#ffffff;
+}
+html,body{
+    padding: 0;
+    margin: 0;
+    background-color:var(--bg);
+    height: 100vh;
+}
+.p{
+    z-index: 3;
+    font-size: 50px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: rgb(0, 0, 0);
+}
+.con{
+    /*to make border and move the box to centre
+    border: 10px solid var(--cbg);*/
+    position: relative;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    height: 40rem;
+    width: 40rem;
+}
+.body{
+    background-color: var(--cbg);
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.frame-side{
+    position: absolute;
+    background-color:transparent;
+    border: 20px solid var(--fcol);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.centre{
+    position: absolute;
+    background-color: rgb(70, 57, 57);
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    top: 50%;
+    color: transparent;
+    left: 50%;
+    z-index: 4;
+    text-align: center;
+    transform: translate(-50%,-50%);
+}
+
+.centre > button{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 2rem;
+    cursor: pointer;
+    padding: 20px;
+    width: 2rem;
+    z-index: 55;
+    transform: translate(-50%,-50%);
+    background-color: transparent;
+    border: none;
+    color:var(--bcol);
+}
+
+.hidden-text {
+    display: none;
+    background-color:rgb(0, 0, 0); /* Keep background intact */
+    z-index: 100;
+    height: auto;
+    width: 90vw;
+    max-height: 35rem;
+    max-width: 40rem;
+    font-size: 18px;
+    font-weight: bold;
+    overflow-y: auto;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+
+    /* 📌 Add spacing */
+    line-height: 1.6; /* Adjusts line spacing */
+    letter-spacing: 0.5px; /* Increases readability */
+
+    
+    
+}
+
+.hidden-text br{
+    display: block;
+    content: " ";
+    border: 2px solid white;
+    margin-top: 5px;
+}
+.hidden-text > br+br{
+    display: block;
+    content: " ";
+    border: 2px solid red;
+    margin-top: 5px;
+}
+
+.hidden-text:focus + .p {
+    display: none;
+}
+
+
+/* Gradient text */
+.hidden-text-gradient {
+    background: linear-gradient(45deg, #e33232, #ac5c1b, #cc108dda, #40bb10, #5efff4, #404f98, #7b00ff);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent; /* Ensures the text is visible */
+    display: inline; /* Ensures it does not affect block elements */
+    animation: gradientAnimation 20s ease infinite;
+    
+}
+
+/* Optional: Animate the gradient */
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+.hidden-text::-webkit-scrollbar {
+    width: 15px; /* Adjust scrollbar width */
+}
+
+.hidden-text::-webkit-scrollbar-track {
+    background: var(--scol); /* Track color */
+}
+
+.hidden-text::-webkit-scrollbar-thumb {
+    background: var(--inscol); /* Scrollbar handle color */
+}
+
+.hidden-text::-webkit-scrollbar-thumb:hover {
+    background: var(--newcol); /* Darker on hover */
+}
+
+.centre > button:focus + .hidden-text {
+    display: block;
+    background-color: black;
+    z-index: 100;
+    height: 20rem;
+    width: 20rem;
+    background-color: red;
+    font-size: 18px;
+    color: black;
+    font-weight: bold;
+    overflow-y:auto ;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.time-con > .time{
+    position: absolute;
+    background-color: var(--line);
+    height: 55px;
+    width: 5px;
+    transform: rotate(calc(30deg*var(--i))) ;
+    transform-origin: center 20rem;
+    left: 49.5%;
+}
+
+.hh, .mh, .sh { /* Applies to all hands */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 0); /* Center horizontally, no vertical offset */
+    transform-origin: center top; /* Rotate from the top of the hand */
+}
+
+/* Specific dimensions and animations for each hand */
+.hh {
+    height: 10rem; /* Length of the hour hand */
+    width: 18px;
+    background-color: var(--hh);
+    clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+    animation: rotate-hour 43200s linear infinite; /* 12-hour rotation */
+}
+
+.mh {
+    height: 13rem; /* Length of the minute hand */
+    width: 10px;
+    background-color: var(--mh);
+    clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+    animation: rotate-minute 3600s linear infinite; /* 60-minute rotation */
+}
+
+.sh {
+    height: 15rem; /* Length of the second hand */
+    width: 5px;
+    background-color: var(--sh);
+    clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+    animation: rotate-second 60s linear infinite; /* 60-second rotation */
+}
+
+
+/* Keyframes for rotating the clock hands */
+@keyframes rotate-hour {
+    0% {
+        transform: translate(-50%, 0%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, 0%) rotate(360deg);
+    }
+}
+
+@keyframes rotate-minute {
+    0% {
+        transform: translate(-50%, 0%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, 0%) rotate(360deg);
+    }
+}
+
+@keyframes rotate-second {
+    0% {
+        transform: translate(-50%, 0%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, 0%) rotate(360deg);
+    }
+}
+
+
