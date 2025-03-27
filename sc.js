@@ -1,3 +1,14 @@
+// Add this at the top of your file
+let hasAlertShown = false;
+
+// Show alert after 5 seconds, but only once
+setTimeout(() => {
+    if (!hasAlertShown) {
+        alert("Click the clock or center button to view project details! 🎯");
+        hasAlertShown = true;
+    }
+}, 2000);
+
 // Get clock hands elements
 const hourHand = document.querySelector('.hh');
 const minuteHand = document.querySelector('.mh');
@@ -24,15 +35,15 @@ updateClock();
 setInterval(updateClock, 1000);
 
 // Center button functionality (keeping existing code)
-document.getElementById("but").addEventListener("click", function () {
-    let pElement = document.querySelector(".p");
-    let textBox = document.getElementById("hid-tex");
+const clockBody = document.querySelector('.body');
+const hiddenText = document.getElementById('hid-tex');
+const pElement = document.querySelector('.p');
 
-    if (textBox.style.display === "block") {
-        textBox.style.display = "none";
-        pElement.style.display = "block";
-    } else {
-        textBox.style.display = "block";
-        pElement.style.display = "none";
-    }
-});
+function toggleHiddenText() {
+    hiddenText.style.display = hiddenText.style.display === 'block' ? 'none' : 'block';
+    pElement.style.display = hiddenText.style.display === 'block' ? 'none' : 'block';
+}
+
+// Add click handlers to both button and clock body
+document.getElementById('but').addEventListener('click', toggleHiddenText);
+clockBody.addEventListener('click', toggleHiddenText);

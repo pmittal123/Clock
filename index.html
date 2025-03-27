@@ -6,46 +6,15 @@
     <title>clock</title>
     <link rel="stylesheet" href="clock.css">
 </head>
+</head>
 <body>
-    <p class="p">click centre </p>
+    <!-- Main Clock Container -->
     <div class="con">
         <div class="body">
             <div class="frame-side"></div>
-            <div class="centre"><button id="but">1</button></div>
-            <p class="hidden-text" id="hid-tex">
-            <span class="hidden-text-gradient">
-                <br><br>PROJECT DETAILS <br><br>
-                This project is a CSS and JavaScript-powered analog clock<br>
-                designed with a structured layout, featuring a circular frame, tick marks, and animated clock hands that rotate dynamically to represent the current time.<br>
-                The design is heavily CSS-driven, with properties like <code>clip-path</code> used to create the pointed clock hands and <code>transform-origin</code> ensuring accurate rotation from the center.<br><br>
-            
-                Key Features:<br><br>
-            
-                - Clock Structure:<br>
-                The <code>.con</code> container holds the entire clock, centering it using <code>transform: translate(-50%, -50%)</code>.<br>
-                The <code>.body</code> serves as the clock face, enclosed within <code>.frame-side</code> to create the outer rim.<br><br>
-            
-                - Clock Hands:<br>
-                The hour (<code>.hh</code>), minute (<code>.mh</code>), and second (<code>.sh</code>) hands are designed using <code>clip-path</code> polygons to create a pointed effect.<br>
-                They are positioned using <code>transform: translate(-50%, 0%)</code> so they rotate from their top point.<br><br>
-            
-                - Time Markers:<br>
-                The <code>.time-con</code> div contains tick marks (<code>.time</code>), which are positioned using <code>transform: rotate(calc(30deg * var(--i)))</code><br>
-                to distribute them evenly around the clock face.<br><br>
-            
-                - Animations:<br>
-                Keyframes (<code>@keyframes rotate-hour</code>, <code>rotate-minute</code>, <code>rotate-second</code>)<br>
-                ensure smooth rotation, updating the hands in real-time.<br><br>
-            
-                Interactive Feature:<br><br>
-            
-                The center button inside <code>.centre</code> allows interaction.<br>
-                When clicked, it can display project details, explaining how the clock was made.<br>
-                This part is still under development, but it will be a key interactive element.
-            
-            </span>
-            </p>
-            
+            <div class="centre">
+                <button id="but"></button>
+            </div>
             <div class="time-con">
                 <div style="--i:0" class="time t0"></div>
                 <div style="--i:1" class="time t1"></div>
@@ -68,6 +37,82 @@
         </div>
     </div>
     
+    <!-- Documentation Section -->
+    <div class="hidden-text" id="hid-tex">
+        <div class="hidden-text-content">
+            <h1>Analog Clock – Learning Project</h1>
+    
+            <h2>📌 Overview</h2>
+            <p>This project is a <strong>real-time analog clock</strong> built using <strong>HTML, CSS, and JavaScript</strong>. <br>
+            - <strong>JavaScript</strong> is used to track real-time updates. <br>
+            - <strong>CSS</strong> is used for styling and animations. <br>
+            - The clock hands move smoothly based on the system time.</p>
+            
+            <h2>🛠️ Key Components</h2>
+            <h3>Clock Structure</h3>
+            <pre><code>
+    &lt;div class="time-con"&gt;
+        &lt;!-- 12 time markers (t0-t11) --&gt;
+        &lt;div style="--i:0" class="time t0"&gt;&lt;/div&gt;
+        ...
+    &lt;/div&gt;
+    &lt;div class="hand"&gt;
+        &lt;div class="hh"&gt;&lt;/div&gt; &lt;!-- Hour hand --&gt;
+        &lt;div class="mh"&gt;&lt;/div&gt; &lt;!-- Minute hand --&gt;
+        &lt;div class="sh"&gt;&lt;/div&gt; &lt;!-- Second hand --&gt;
+    &lt;/div&gt;
+            </code></pre>
+    
+            <h2>🎭 Easter Egg: Hidden Message</h2>
+            <p>An <strong>interactive hidden message</strong> is revealed when the user <strong>clicks on the clock</strong>. This feature adds a fun surprise for users!</p>
+    
+            <h3>🔹 JavaScript for the Easter Egg</h3>
+            <p>When the clock is clicked, a hidden message appears.</p>
+            <pre><code>
+    document.querySelector('.body').addEventListener('click', function() {
+        let message = document.getElementById('hiddenMessage');
+        message.style.display = (message.style.display === 'none') ? 'block' : 'none';
+    });
+            </code></pre>
+    
+            <h3>🔹 HTML for the Hidden Message</h3>
+            <p>A hidden message is initially set to <code>display: none;</code> and is revealed when clicked.</p>
+            <pre><code>
+    &lt;div id="hiddenMessage" style="display: none;"&gt;
+        🎉 Surprise! You found the hidden message! 🎉
+    &lt;/div&gt;
+            </code></pre>
+    
+            <h3>🔹 CSS for Styling the Hidden Message</h3>
+            <p>The message appears smoothly when revealed.</p>
+            <pre><code>
+    #hiddenMessage {
+        font-size: 18px;
+        color: red;
+        text-align: center;
+        margin-top: 20px;
+        display: none;
+    }
+            </code></pre>
+    
+            <h2>📖 What I Learned</h2>
+            <p>✅ How to <strong>fetch real-time system time</strong> using JavaScript. <br>
+            ✅ How to <strong>rotate elements dynamically</strong> with <code>transform</code>. <br>
+            ✅ How to use <strong>CSS <code>transform-origin</code></strong> for precise movements. <br>
+            ✅ The importance of <strong><code>setInterval()</code></strong> for continuous updates. <br>
+            ✅ How to add <strong>interactive features (Easter egg)</strong> using event listeners.</p>
+            
+            <h2>🚀 Future Improvements</h2>
+            <p>🔹 Add a <strong>dark mode switch</strong>. <br>
+            🔹 Make the clock <strong>responsive</strong> for mobile screens. <br>
+            🔹 Add a <strong>digital time display</strong> below the analog clock. <br>
+            🔹 Improve <strong>animations for a smoother effect</strong>. <br>
+            🔹 Add <strong>more hidden surprises</strong>!</p>
+            
+            <p>This documentation helps solidify my learning and serves as a great reference for future projects. 🚀 Keep experimenting and have fun coding! 😃</p>
+        </div>
+    </div>
+    
     <script src="sc.js"></script>
 </body>
-</html> 
+</html>
