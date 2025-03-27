@@ -4,8 +4,8 @@
     --cbg:#ffffff;
     --line:black;
     --hh:black;
-    --mh:black;
-    --sh:black;
+    --mh:rgb(0, 0, 0);
+    --sh:rgb(255, 0, 0);
     --bcol:transparent;
     --scol:#4444;
     --inscol:#9f9f9f;
@@ -106,8 +106,6 @@ html,body{
     white-space: normal;
     word-wrap: break-word;
     overflow-wrap: break-word;
-
-    /* 📌 Add spacing */
     line-height: 1.6; /* Adjusts line spacing */
     letter-spacing: 0.5px; /* Increases readability */
 
@@ -195,66 +193,55 @@ html,body{
     left: 49.5%;
 }
 
-.hh, .mh, .sh { /* Applies to all hands */
+/* Clock hands styling */
+.hand {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, 0); /* Center horizontally, no vertical offset */
-    transform-origin: center top; /* Rotate from the top of the hand */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Specific dimensions and animations for each hand */
 .hh {
-    height: 10rem; /* Length of the hour hand */
-    width: 18px;
-    background-color: var(--hh);
-    clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
-    animation: rotate-hour 43200s linear infinite; /* 12-hour rotation */
+    position: absolute;
+    width: 8px;
+    height: 180px;  /* Increased from original */
+    background: var(--hh);
+    transform-origin: bottom;
+    border-radius: 4px;
+    bottom: 50%;
+    left: calc(50% - 4px);
+    z-index: 2;
 }
 
 .mh {
-    height: 13rem; /* Length of the minute hand */
-    width: 10px;
-    background-color: var(--mh);
-    clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
-    animation: rotate-minute 3600s linear infinite; /* 60-minute rotation */
+    position: absolute;
+    width: 6px;
+    height: 220px;  /* Increased from original */
+    background: var(--mh);
+    transform-origin: bottom;
+    border-radius: 3px;
+    bottom: 50%;
+    left: calc(50% - 3px);
+    z-index: 3;
 }
 
 .sh {
-    height: 15rem; /* Length of the second hand */
-    width: 5px;
-    background-color: var(--sh);
-    clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
-    animation: rotate-second 60s linear infinite; /* 60-second rotation */
+    position: absolute;
+    width: 4px;
+    height: 240px;  /* Increased from original */
+    background: var(--sh);
+    transform-origin: bottom;
+    border-radius: 2px;
+    bottom: 50%;
+    left: calc(50% - 2px);
+    z-index: 3;
 }
 
-
-/* Keyframes for rotating the clock hands */
-@keyframes rotate-hour {
-    0% {
-        transform: translate(-50%, 0%) rotate(0deg);
-    }
-    100% {
-        transform: translate(-50%, 0%) rotate(360deg);
-    }
-}
-
-@keyframes rotate-minute {
-    0% {
-        transform: translate(-50%, 0%) rotate(0deg);
-    }
-    100% {
-        transform: translate(-50%, 0%) rotate(360deg);
-    }
-}
-
-@keyframes rotate-second {
-    0% {
-        transform: translate(-50%, 0%) rotate(0deg);
-    }
-    100% {
-        transform: translate(-50%, 0%) rotate(360deg);
-    }
+/* Optional: Add smooth transitions */
+.hh, .mh, .sh {
+    transition: transform 0.1s cubic-bezier(0.4, 2.08, 0.55, 0.44);
 }
 
 
